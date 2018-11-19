@@ -18,27 +18,6 @@ class MotorTest(unittest.TestCase):
     def test_put_freq(self):
         pub = rospy.Publisher('/motor_raw', MotorFreqs)
         m = MotorFreqs()
-"travis_test_motors1.py" 50L, 1630C
-#!/usr/bin/env python
-#encoding: utf8
-import unittest, rostest
-import rosnode, rospy
-import time
-from pimouse_ros.msg import MotorFreqs
-from geometry_msgs.msg import Twist
-
-class MotorTest(unittest.TestCase):
-    def file_check(self,dev,value,message):
-        with open("/dev/" + dev,"r") as f:
-            self.assertEqual(f.readline(),str(value)+"\n",message)
-
-    def test_node_exist(self):
-        nodes = rosnode.get_node_names()
-        self.assertIn('/motors', nodes, "node does not exist")
-
-    def test_put_freq(self):
-        pub = rospy.Publisher('/motor_raw', MotorFreqs)
-        m = MotorFreqs()
         m.left_hz = 123
         m.right_hz = 456
         for i in range(10):
